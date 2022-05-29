@@ -3,13 +3,8 @@ import { useState, useEffect} from "react"
 import { StarIcon, BookmarkIcon } from "@heroicons/react/solid"
 import Currency from 'react-currency-formatter'
 
-const MAX_RATING = 5;
-const MIN_RATING = 1;
 
-export default function Product({id, title, price, image}) {
-    const [rating] = useState(
-        Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
-    )
+export default function Product({title, price, image, rating}) {
 
     const [hasPrime] = useState( Math.random() < 0.5)
     const [isAmazonChoice] = useState( Math.random() < 0.1)
@@ -56,7 +51,7 @@ export default function Product({id, title, price, image}) {
             <div className="p-3">
                 <h4 className="my-3 line-clamp-2 text-xl link hover:text-amazon_blue-iris">{title}</h4>
                 <div className="flex">
-                    {Array(rating).fill().map((_,i) => (
+                    {Array(Math.round(rating.rate)).fill().map((_,i) => (
                         <StarIcon className="w-5 text-amazon_yellow" />
                     ))}
                 </div>

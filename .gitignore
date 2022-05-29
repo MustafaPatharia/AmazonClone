@@ -14,6 +14,7 @@
 
 # production
 /build
+/utils
 
 # misc
 .DS_Store
@@ -30,5 +31,5 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# vercel
-.vercel
+# configurattion
+/wooCommerceLocal.config.js

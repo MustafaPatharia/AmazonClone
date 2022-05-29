@@ -7,7 +7,6 @@ import Promotion from "../components/Promotion";
 import CategoryOffersFeed from "../components/CategoryOffersFeed";
 
 export default function Home({products}) {
-  console.log(products[2])
   return (
     <div>
       <Head>
@@ -40,41 +39,26 @@ export default function Home({products}) {
   );
 }
 
-var WooCommerceAPI = require('@woocommerce/woocommerce-rest-api').default;
-var wooConfig = require('../../woocommerce.config');
-
-// initialise the WooCommerceRestApi //
-// NOTE: must execute these API calls server-side because env vars only available there and it is more secure
-const WooCommerce = new WooCommerceAPI({
-  url: wooConfig.siteURL,
-  consumerKey: wooConfig.consumerKey,
-  consumerSecret: wooConfig.consumerSecrect,
-  wpAPI: true,
-  version: "wc/v3",
-});
-
-// create new WooCommerce order by passing in required data object //
-// export async function createWooCommerceOrder() {
-//   try {
-//     const response = await api.get("product");
-//     return response;
-//   } catch (error) {
-//     throw new Error(error);
-//   }
-// }
+var WooCommerceAPI = require('../../wooCommerceApi');
 
 export async function getServerSideProps(context){
-  var products = null;
-  
-  await WooCommerce.get("products")
-  .then((response) => {
-    products = response.data
-  } )
-  .catch((error) => {
-    console.log(error.response.data);
-  });
 
-  products = await fetch("https://fakestoreapi.com/products").then(
+  // Get All WooCommerce Producst  //
+  // await WooCommerceAPI.get("products")
+  // .then((response) => {
+  //   const products = response.data
+  //   return{
+  //     props: {
+  //       products,
+  //     }
+  //   }
+  // })
+  // .catch((error) => {
+  //   console.log(error.response.data);
+  // });
+
+  // FakeStore server side props
+  const products = await fetch("https://fakestoreapi.com/products").then(
     (res) => res.json()
   )
   return{

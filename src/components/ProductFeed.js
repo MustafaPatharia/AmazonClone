@@ -18,8 +18,8 @@ function ProductFeed({products, title}) {
         <p className='text-sm text-amazon_yellow-light link'>View all</p>
       </div>
       <div className="grid grid-flow-row-dense grid-cols-2 lg:grid-cols-4">
-        {currentProducts.slice(0,4).map(({id, title, price, image}) => (
-          <Product key={id} title={title} price={price} image={image} />
+        {currentProducts.slice(0,4).map(({id, title, price, image, rating}) => (
+          <Product key={id} title={title} price={price} image={image} rating={rating}/>
         ))}
       </div>
     </div>
