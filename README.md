@@ -28,4 +28,9 @@ Run commands
 
 ### If you see the window below then you are set to build AMAZON 2.0!
 
-![Build AMAZON 2.0 Screenshot](TemplateScreenshot.jpg?raw=true "Build AMAZON 2.0 Screenshot")
+## Landing Page
+![landingPage](https://user-images.githubusercontent.com/46315219/171383458-84be5cb2-b771-4b2e-b0dc-78c3e95f372a.png)
+
+## Cart Page
+![cartPage](https://user-images.githubusercontent.com/46315219/171383749-0239831b-5ff3-4962-b1b9-88f7a61c5a59.png)
+
