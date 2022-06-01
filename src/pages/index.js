@@ -39,8 +39,6 @@ export default function Home({products}) {
   );
 }
 
-var WooCommerceAPI = require('../../wooCommerceApi');
-
 export async function getServerSideProps(context){
 
   // FakeStore server side props
