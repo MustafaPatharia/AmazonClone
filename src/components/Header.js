@@ -21,8 +21,8 @@ function Header() {
   return (
     <header>
         {/* Top Nav */}
-        <div className='flex items-center bg-amazon_blue p-1 flex-grow py-4'>
-            <div className='mt-2 flex items-center flex-grow sm:flex-grow-0 text-white text-xs'>
+        <div className='flex items-center bg-amazon_blue p-1 grow py-4'>
+            <div className='mt-2 flex items-center grow sm:grow-0 text-white text-xs'>
                 <Image src="https://links.papareact.com/f90" width={150} height={40} objectFit="contain"
                 className='cursor-pointer' onClick={() => router.push('/')}/>
                 <div className='link'>
@@ -35,8 +35,8 @@ function Header() {
             </div>
  
             {/* Search */}
-            <div className="hidden sm:flex items-center bg-amazon_yellow h-10 rounded-md rounded-bg hover:bg-yellow-500 cursor-pointer flex-grow mx-6">
-              <input className='p-2 h-full w-full flex-grow flex-shrink rounded-l-md focus:outline-none px-4 ' placeholder='Search from A to Z' type="text" />
+            <div className="hidden sm:flex items-center bg-amazon_yellow h-10 rounded-md rounded-bg hover:bg-yellow-500 cursor-pointer grow mx-6">
+              <input className='p-2 h-full w-full grow flex-shrink rounded-l-md focus:outline-none px-4 ' placeholder='Search from A to Z' type="text" />
               <SearchIcon className="p-4 h-14 text-white"/>
             </div>
 

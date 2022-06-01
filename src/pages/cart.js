@@ -17,7 +17,7 @@ function cart() {
             <main className="lg:flex max-w-screen-2xl mx-auto">
                 <div className="lg:flex lg:w-full m-5 lg:space-x-8">
                 {/* Left */}
-                <div className="flex-grow-[4] flex-1">
+                <div className="grow-[4] flex-1">
                     <div className="flex flex-col">
                         <h1 className="text-3xl my-8">{items.length === 0 ? 'Your Amazon basket is empty' : 'Shopping Basket'}</h1>
                         <div className="grid gap-y-4 md:grid-cols-2 lg:grid-cols-1 md:grid-flow-row-dense">
