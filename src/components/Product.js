@@ -2,16 +2,19 @@ import Image from "next/image"
 import { useState, useEffect} from "react"
 import { StarIcon, BookmarkIcon } from "@heroicons/react/solid"
 import Currency from 'react-currency-formatter'
+import { useDispatch } from "react-redux"
+import { addToBasket } from "../slices/basketSlice"
 
+export default function Product({id,title, price, image, rating}) {
 
-export default function Product({title, price, image, rating}) {
-
+    const dispatch = useDispatch();
     const [hasPrime] = useState( Math.random() < 0.5)
     const [isAmazonChoice] = useState( Math.random() < 0.1)
     const [isBestSeller] = useState( Math.random() < 0.2)
     const [isBookmarked] = useState( Math.random() < 0.1)
     const [ primeDate , setPrimeDate ] = useState()
     const [ nonPrimeDate , setNonPrimeDate ] = useState()
+    const [ quantity ] = useState(1);
 
     // console.log(hasPrime)
     useEffect(() => {
@@ -23,6 +26,21 @@ export default function Product({title, price, image, rating}) {
         non_prime_dt.setDate(non_prime_dt.getDate() + 5)
         setNonPrimeDate(non_prime_dt.toDateString().slice(0,-5));
     },[])
+
+    const addItemToBasket = () => {
+        const deliveryDate = hasPrime ? primeDate : nonPrimeDate
+        const product = {
+            id,
+            title,
+            price,
+            image,
+            quantity,
+            hasPrime,
+            deliveryDate,
+        }
+        // Sending the product as an action to Store
+        dispatch(addToBasket(product));
+    }
 
     return (
         <div className="relative flex flex-col m-6 bg-white" >
@@ -52,7 +70,7 @@ export default function Product({title, price, image, rating}) {
                 <h4 className="my-3 line-clamp-2 text-xl link hover:text-amazon_blue-iris">{title}</h4>
                 <div className="flex">
                     {Array(Math.round(rating.rate)).fill().map((_,i) => (
-                        <StarIcon className="w-5 text-amazon_yellow" />
+                        <StarIcon className="w-5 text-amazon_yellow-light" />
                     ))}
                 </div>
 
@@ -75,6 +93,8 @@ export default function Product({title, price, image, rating}) {
                         <p className="w-52">FREE delivery on your first order shiped by Amazon</p>
                     </div>
                 ) }
+
+                <button onClick={addItemToBasket} className="mt-3 cursor-pointer hover:text-amazon_yellow">Add to basket</button>
             </div>
 
         </div>

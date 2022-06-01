@@ -33,3 +33,6 @@ yarn-error.log*
 
 # configurattion
 /wooCommerceLocal.config.js
+/wooCommerceApi.js
+/wooCommerceLocal.config.js
+/ExtraCode.txt

@@ -43,20 +43,6 @@ var WooCommerceAPI = require('../../wooCommerceApi');
 
 export async function getServerSideProps(context){
 
-  // Get All WooCommerce Producst  //
-  // await WooCommerceAPI.get("products")
-  // .then((response) => {
-  //   const products = response.data
-  //   return{
-  //     props: {
-  //       products,
-  //     }
-  //   }
-  // })
-  // .catch((error) => {
-  //   console.log(error.response.data);
-  // });
-
   // FakeStore server side props
   const products = await fetch("https://fakestoreapi.com/products").then(
     (res) => res.json()

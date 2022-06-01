@@ -1,10 +1,18 @@
 import Image from 'next/image'
-import {MenuIcon, SearchIcon, ShoppingCartIcon, ChevronDownIcon} from '@heroicons/react/outline'
+import { SearchIcon, ShoppingCartIcon, ChevronDownIcon} from '@heroicons/react/outline'
 import profilePic from '../../public/images/profile.jpg'
-import { useState } from 'react'
-function Header() {
+import { useState,useEffect } from 'react';
+import {signIn, signOut , useSession } from 'next-auth/react'
+import { useRouter} from 'next/router'
+import { useSelector } from 'react-redux';
+import { selectItems } from '../slices/basketSlice';
 
+function Header() {
   const [isShowCategory, setIsShowCategory] = useState(false)
+
+  const {data : session} = useSession();
+  const router = useRouter();
+  const items = useSelector(selectItems);
 
   const toggleCategory = () =>{
     setIsShowCategory(!isShowCategory)
@@ -16,8 +24,7 @@ function Header() {
         <div className='flex items-center bg-amazon_blue p-1 flex-grow py-4'>
             <div className='mt-2 flex items-center flex-grow sm:flex-grow-0 text-white text-xs'>
                 <Image src="https://links.papareact.com/f90" width={150} height={40} objectFit="contain"
-                className='cursor-pointer'/>
-                              <div>
+                className='cursor-pointer' onClick={() => router.push('/')}/>
                 <div className='link'>
                   <p>Select</p>
                   <div className='flex' onClick={toggleCategory}>
@@ -25,7 +32,6 @@ function Header() {
                     <ChevronDownIcon className='h-5'/>
                   </div>
                 </div>
-              </div>
             </div>
  
             {/* Search */}
@@ -37,18 +43,18 @@ function Header() {
             {/* Right */}
             <div className='flex space-x-6  text-xs whitespace-nowrap items-center text-white mr-6'>
               <div className='hidden lg:inline'>
-                <Image src={profilePic} height={30} width={30} className='rounded-full'/>
+                <Image src={session ? session.user.image : profilePic } height={30} width={30} className='rounded-full'/>
               </div>
-              <div className='link'>
-                <p>Hello, Mustafa</p>
+              <div onClick={!session ? signIn : signOut} className='link'>
+                <p>{ session ? `Hello, ${session.user.name.split(' ')[0]}` : 'Sign In' }</p>
                 <p className='font-extrabold md:text-sm'>Accounts & Links</p>
               </div>
               <div className='link'>
                 <p>Returns</p>
                 <p className='font-extrabold md:text-sm'>& Orders</p>
               </div>
-              <div className='relative link'>
-                <span className='absolute top-0 right-0 h-4 w-4 bg-amazon_yellow font-bold text-center rounded-full '>0</span>
+              <div className='relative link' onClick={() => router.push('cart')}>
+                <span className='absolute top-0 right-0 h-4 w-4 bg-amazon_yellow font-bold text-center rounded-full '>{items.length}</span>
                 <ShoppingCartIcon className='h-8' />
               </div>
             </div>

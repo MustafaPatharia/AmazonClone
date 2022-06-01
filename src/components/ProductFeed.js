@@ -19,7 +19,7 @@ function ProductFeed({products, title}) {
       </div>
       <div className="grid grid-flow-row-dense grid-cols-2 lg:grid-cols-4">
         {currentProducts.slice(0,4).map(({id, title, price, image, rating}) => (
-          <Product key={id} title={title} price={price} image={image} rating={rating}/>
+          <Product key={id} id={id} title={title} price={price} image={image} rating={rating}/>
         ))}
       </div>
     </div>
