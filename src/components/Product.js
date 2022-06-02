@@ -43,7 +43,7 @@ export default function Product({id,title, price, image, rating}) {
     }
 
     return (
-        <div className="relative flex flex-col m-6 bg-white" >
+        <div className="relative flex flex-col m-3 md:m-6 bg-white" >
             <div className="absolute top-2 right-2 w-[95%] z-10">
                 <div className="flex justify-between">
                     { isAmazonChoice && !isBestSeller && ( <div className="bg-amazon_blue mr-auto text-white px-3 py-1 fit-content w-36 text-sm">
@@ -67,30 +67,30 @@ export default function Product({id,title, price, image, rating}) {
             </div>
 
             <div className="p-3">
-                <h4 className="my-3 line-clamp-2 text-xl link hover:text-amazon_blue-iris">{title}</h4>
+                <h4 className="my-3 line-clamp-2 text-xs md:text-xl link hover:text-amazon_blue-iris">{title}</h4>
                 <div className="flex">
                     {Array(Math.round(rating.rate)).fill().map((_,i) => (
-                        <StarIcon className="w-5 text-amazon_yellow-light" />
+                        <StarIcon className="w-3 md:w-5 text-amazon_yellow-light" />
                     ))}
                 </div>
 
                 {/* <div className="">{description}</div> */}
-                <div className="my-2 text-2xl font-semibold">
+                <div className="my-2 text-sm  md:text-2xl font-semibold">
                     <Currency quantity={price} currency="AED"/>
                 </div>
 
                 { hasPrime ? (
                     <div className="flex items-center space-x-3 text-gray-500">
-                        <img className="w-11 h-7" src="/images/amazon_prime.png" alt="amazon_prime" />
-                        <div>
+                        <img className="w-6 h-3 md:w-11 md:h-7" src="/images/amazon_prime.png" alt="amazon_prime" />
+                        <div className="text-xs md:text-base">
                             <p>Get it <span className="font-semibold">{primeDate}</span></p>
                             <p>FREE delivery by Amazon</p>
                         </div>
                     </div>
                 ) : (
-                    <div className="text-gray-500 text-sm">
+                    <div className="text-gray-500 text-xs md:text-sm">
                         <p>Get it <span className="font-semibold">{nonPrimeDate}</span></p>
-                        <p className="w-52">FREE delivery on your first order shiped by Amazon</p>
+                        <p>FREE delivery on your first order shiped by Amazon</p>
                     </div>
                 ) }
 

@@ -25,7 +25,7 @@ function Header() {
             <div className='mt-2 flex items-center grow sm:grow-0 text-white text-xs'>
                 <Image src="https://links.papareact.com/f90" width={150} height={40} objectFit="contain"
                 className='cursor-pointer' onClick={() => router.push('/')}/>
-                <div className='link'>
+                <div className='link hidden md:block'>
                   <p>Select</p>
                   <div className='flex' onClick={toggleCategory}>
                     <p className='font-extrabold'>Category</p>
@@ -49,7 +49,7 @@ function Header() {
                 <p>{ session ? `Hello, ${session.user.name.split(' ')[0]}` : 'Sign In' }</p>
                 <p className='font-extrabold md:text-sm'>Accounts & Links</p>
               </div>
-              <div className='link'>
+              <div className='link hidden md:block'>
                 <p>Returns</p>
                 <p className='font-extrabold md:text-sm'>& Orders</p>
               </div>
@@ -62,7 +62,7 @@ function Header() {
 
         {/* Dropdown */}
         <div className='relative z-20'>
-          <div className={`absolute left-[150px] rounded-lg w-80 bg-amazon_blue-alice p-2 ${isShowCategory ? 'infline' : 'hidden'}`}>
+          <div className={`absolute md:left-[150px] rounded-lg w-80 bg-amazon_blue-alice p-2 ${isShowCategory ? 'infline' : 'hidden'}`}>
             <ul className='flex flex-col'>
               <li className='link hover:bg-white rounded-md p-4'>Digital Content & Devices</li>
               <li className='link hover:bg-white rounded-md p-4'>Art & Crafts</li>
