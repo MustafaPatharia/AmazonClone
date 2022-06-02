@@ -21,6 +21,9 @@ Run commands
 
 3) ```yarn run dev```
 
+## Demo Link
+https://amazon-clone-4np80w4rw-mustafapatharia.vercel.app/
+
 
 ## Landing Page
 ![landingPage](https://user-images.githubusercontent.com/46315219/171383458-84be5cb2-b771-4b2e-b0dc-78c3e95f372a.png)
