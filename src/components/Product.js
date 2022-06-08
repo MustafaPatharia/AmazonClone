@@ -4,6 +4,7 @@ import { StarIcon, BookmarkIcon } from "@heroicons/react/solid"
 import Currency from 'react-currency-formatter'
 import { useDispatch } from "react-redux"
 import { addToBasket } from "../slices/basketSlice"
+import Link from "next/link"
 
 export default function Product({id,title, price, image, rating}) {
 
@@ -67,7 +68,9 @@ export default function Product({id,title, price, image, rating}) {
             </div>
 
             <div className="p-3">
-                <h4 className="my-3 line-clamp-2 text-xs md:text-xl link hover:text-amazon_blue-iris">{title}</h4>
+                <Link key={id} href={`/product/${id}`}>
+                    <h4 className="my-3 line-clamp-2 text-xs md:text-xl link hover:text-amazon_blue-iris">{title}</h4>
+                </Link>
                 <div className="flex">
                     {Array(Math.round(rating.rate)).fill().map((_,i) => (
                         <StarIcon className="w-3 md:w-5 text-amazon_yellow-light" />
